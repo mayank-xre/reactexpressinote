@@ -65,7 +65,7 @@ router.post("/login",[
   }
 ) 
 router.post('/guser',fetchu,async (req,res)=>{
-    const user=await User.findById(userId).select("-password")
+    const user=await User.findById(req.user).select("-password")
     res.send(user)
 })
 module.exports=router
