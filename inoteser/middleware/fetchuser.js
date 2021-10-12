@@ -10,7 +10,7 @@ const fetchu=(req,res,next)=>{
         req.user=data.id
         next()
     } catch (error) {
-        res.status(401).send({error:"Please use a valid token"})
+        res.status(404).send({error:"Please use a valid token"})
     }
 }
 module.exports=fetchu

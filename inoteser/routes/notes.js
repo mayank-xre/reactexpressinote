@@ -5,7 +5,7 @@ const Notes = require("../models/Notes");
 const router = express.Router();
 router.get("/fetchanotes", fetchu, async (req, res) => {
   try {
-    const notes = await Notes.find({ user: req.user._id });
+    const notes = await Notes.find({ user: req.user});
     res.json(notes);
   } catch (err) {
     console.error(err);
