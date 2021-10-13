@@ -1,9 +1,14 @@
-import {React,useEffect} from "react";
-import { Link,useLocation } from "react-router-dom";
+import {React,useEffect,Fragment} from "react";
+import { Link,useLocation,useHistory } from "react-router-dom";
 
 export default function Navbar() {
     let location=useLocation()
     useEffect(() => {},[location])
+    const history=useHistory()
+    const logout=()=>{
+      localStorage.removeItem("token")
+      history.push("/login")
+    }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -31,8 +36,17 @@ export default function Navbar() {
             <li className="nav-item">
                <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} to="/about">About</Link>
             </li>
+            {!localStorage.getItem("token") ?<>
+            <li className="nav-item">
+               <Link className={`nav-link ${location.pathname==="/login"?"active":""}`} to="/login">Login</Link>
+            </li>
+            <li className="nav-item">
+               <Link className={`nav-link ${location.pathname==="/signup"?"active":""}`} to="/signup">Signup</Link>
+            </li></>
+          :<li><button className="btn btn-primary" type="button" onClick={logout}>Logout</button></li>}
           </ul>
-          <form className="d-flex">
+        </div>
+        <form className="d-flex">
             <input
               className="form-control me-2"
               type="search"
@@ -43,7 +57,6 @@ export default function Navbar() {
               Search
             </button>
           </form>
-        </div>
       </div>
     </nav>
   );
