@@ -25,18 +25,19 @@ export default function NoteItem(props) {
   const subbut=(e)=>{
     refb.current.click()
   }
+  const ndate=new Date(note.datecreated)
   return (
     <>
-    <div className="col-md-3 my-2">
-      <div className="card">
+    <div className="grid-item my-2">
+      <div className={`card bg-${context.mode} text-${context.mode==="light"?"dark":"light"}`}>
         <div class="card-body">
-          <div className="d-flex align-items-center">
-          <h5 class="card-title">{note.title}</h5>
-          <i className="far fa-trash-alt mx-2" onClick={()=>{delNote(note._id);props.alert("Deleted Successfully","success")}}></i>
-          <i className="fas fa-edit" onClick={showmodal}></i>
-          </div>
-          <p class="card-text">{note.description}</p>
+          <h5 class="card-title">{note.title} <span class="badge rounded-pill bg-info text-dark">{note.topic}</span></h5>
+          <p class="card-text">{note.description}<i className="far fa-trash-alt mx-2" onClick={()=>{delNote(note._id);props.alert("Deleted Successfully","success")}}></i>
+          <i className="fas fa-edit" onClick={showmodal}></i></p>
         </div>
+        <div class="card-footer text-muted">
+    {ndate.toLocaleString()}
+  </div>
       </div>
     </div>
     <button
@@ -79,17 +80,18 @@ export default function NoteItem(props) {
             className="form-control"
             id="etitle"
             aria-describedby="emailHelp"
+            required
+            minLength={5}
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">
+          <label for="exampleInputPassword1" className="form-label">
             Description
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="edesc"
-          />
+          <textarea class="form-control" id="edesc" rows="3" required
+            minLength={5}></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Atleast Five characters Needed</div>
         </div>
         <div className="mb-3">
           <label className="form-label">
@@ -99,6 +101,9 @@ export default function NoteItem(props) {
             type="text"
             className="form-control"
             id="etopic"
+            required
+            minLength={3}
+            maxLength={10}
           />
         </div>
         <button ref={refb} type="submit" className="btn btn-dark" hidden></button>

@@ -2,6 +2,8 @@
   "name": "inotec",
   "version": "0.1.0",
   "private": true,
+  "author": "Jane Doe",
+  "description": "Hello World!",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -38,5 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import notecontext from '../context/notes/noteContext'
 
 export default function Signup(props) {
     const history=useHistory()
+    const context = useContext(notecontext)
     const signupu=async(e)=>{
         e.preventDefault();
         const signupd={
@@ -32,7 +34,7 @@ export default function Signup(props) {
         } 
     }
     return (
-        <div class="container my-3">
+        <div class={`container my-3 text-${context.mode==="light"?"dark":"light"}`}>
           <h2>Signup to use Inote</h2>
       <form onSubmit={signupu}>
         <div class="mb-3">

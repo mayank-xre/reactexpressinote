@@ -16,7 +16,8 @@ router.post(
   [
     body("title", "enter a valid title").exists(),
     body("desc", "enter a valid title").exists(),
-    body("topic", "enter a valid topic").exists(),
+    body("topic", "enter a valid topic").isLength({min:3,max:10}),
+    body("desc", "enter a valid title").exists()
   ],
   fetchu,
   async (req, res) => {
@@ -39,7 +40,7 @@ router.post(
   [
     body("title", "Enter a valid title").exists(),
     body("desc", "Enter a valid title").exists(),
-    body("topic", "Enter a valid topic").exists(),
+    body("topic", "Enter a valid topic").isLength({min:3,max:10}),
     body("id", "Enter a valid id").exists(),
   ],
   fetchu,

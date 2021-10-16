@@ -5,7 +5,7 @@ const noteschema = new db.Schema({
     description:{type:String},
     user:{type:db.Schema.Types.ObjectId,ref:"users"},
     topic:{type:String,default:"general"},
-    datecreated:{type:Date}
+    datecreated:{type:Date,default:Date.now}
 })
 
 module.exports=db.model('notes',noteschema)

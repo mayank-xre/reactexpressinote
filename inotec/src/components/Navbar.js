@@ -1,16 +1,19 @@
-import {React,useEffect,Fragment} from "react";
+import {React,useEffect,useContext} from "react";
+import notecontext from "../context/notes/noteContext"
 import { Link,useLocation,useHistory } from "react-router-dom";
 
 export default function Navbar() {
     let location=useLocation()
+    const context=useContext(notecontext)
     useEffect(() => {},[location])
     const history=useHistory()
-    const logout=()=>{
-      localStorage.removeItem("token")
+    const logout=async(e)=>{
+      e.preventDefault();
+      document.cookie = "auth-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       history.push("/login")
     }
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className={`navbar navbar-expand-lg navbar-${context.mode} bg-${context.mode}`}>
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Inote
@@ -33,30 +36,21 @@ export default function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-               <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} to="/about">About</Link>
-            </li>
-            {!localStorage.getItem("token") ?<>
+            {!context.cookieExists("auth-token")?<>
             <li className="nav-item">
                <Link className={`nav-link ${location.pathname==="/login"?"active":""}`} to="/login">Login</Link>
             </li>
             <li className="nav-item">
                <Link className={`nav-link ${location.pathname==="/signup"?"active":""}`} to="/signup">Signup</Link>
             </li></>
-          :<li><button className="btn btn-primary" type="button" onClick={logout}>Logout</button></li>}
+          :<li className="nav-item">
+            <a className="nav-link" onClick={logout}>Logout</a></li>}
           </ul>
         </div>
-        <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+        <div class={`form-check form-switch text-${context.mode==="light"?"dark":"light"}`}>
+  <input class="form-check-input" type="checkbox" role="switch" onClick={context.togglemode} id="flexSwitchCheckDefault" defaultChecked={localStorage.getItem("theme")=="light"?false:true}/>
+  <label class="form-check-label" for="flexSwitchCheckDefault">Toggle Dark Mode</label>
+</div>
       </div>
     </nav>
   );

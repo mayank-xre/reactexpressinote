@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import  { Redirect } from 'react-router-dom'
+import notecontext from "../context/notes/noteContext";
 
 export default function Login(props) {
     const history=useHistory()
+    const context=useContext(notecontext)
     const loginu=async(e)=>{
         e.preventDefault();
         const logd={
@@ -14,19 +17,19 @@ export default function Login(props) {
             headers:new Headers({
                 'Content-Type': 'application/json'
               }),
+              credentials:"include",
               body: JSON.stringify(logd)
         })
         const json=await res.json()
-        if(json.authtoken){
-            localStorage.setItem("token",json.authtoken)
-            history.push("/")
+        if(json.status){
+          history.push("/")
         }
         else{
-            props.alert("Invalid Credentials","danger")
+          props.alert("Invalid Credentials","danger")
         }
     }
   return (
-    <div class="container my-3">
+    <div class={`container my-3 text-${context.mode==="light"?"dark":"light"}`}>
       <h2>Login to continue to Inote</h2>
       <form onSubmit={loginu}>
         <div class="mb-3">
