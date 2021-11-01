@@ -47,9 +47,9 @@ export default function Navbar() {
             <a className="nav-link" onClick={logout}>Logout</a></li>}
           </ul>
         </div>
-        <div class={`form-check form-switch text-${context.mode==="light"?"dark":"light"}`}>
-  <input class="form-check-input" type="checkbox" role="switch" onClick={context.togglemode} id="flexSwitchCheckDefault" defaultChecked={localStorage.getItem("theme")=="light"?false:true}/>
-  <label class="form-check-label" for="flexSwitchCheckDefault">Toggle Dark Mode</label>
+        <div className={`form-check form-switch text-${context.mode==="light"?"dark":"light"}`}>
+  <input className="form-check-input" type="checkbox" role="switch" onClick={context.togglemode} id="flexSwitchCheckDefault" defaultChecked={localStorage.getItem("theme")=="light"?false:true}/>
+  <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Toggle Dark Mode</label>
 </div>
       </div>
     </nav>

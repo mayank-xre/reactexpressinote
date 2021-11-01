@@ -30,12 +30,12 @@ export default function NoteItem(props) {
     <>
     <div className="grid-item my-2">
       <div className={`card bg-${context.mode} text-${context.mode==="light"?"dark":"light"}`}>
-        <div class="card-body">
-          <h5 class="card-title">{note.title} <span class="badge rounded-pill bg-info text-dark">{note.topic}</span></h5>
-          <p class="card-text">{note.description}<i className="far fa-trash-alt mx-2" onClick={()=>{delNote(note._id);props.alert("Deleted Successfully","success")}}></i>
+        <div className="card-body">
+          <h5 className="card-title">{note.title} <span className="badge rounded-pill bg-info text-dark">{note.topic}</span></h5>
+          <p className="card-text">{note.description}<i className="far fa-trash-alt mx-2" onClick={()=>{delNote(note._id);props.alert("Deleted Successfully","success")}}></i>
           <i className="fas fa-edit" onClick={showmodal}></i></p>
         </div>
-        <div class="card-footer text-muted">
+        <div className="card-footer text-muted">
     {ndate.toLocaleString()}
   </div>
       </div>
@@ -43,33 +43,33 @@ export default function NoteItem(props) {
     <button
         ref={refm}
         type="button"
-        class="btn btn-primary"
+        className="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         hidden
       >
       </button>
       <div
-        class="modal fade"
+        className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
                 Edit Note
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
             <form className="my-3" onSubmit={editNoteform}>
         <div className="mb-3">
           <label className="form-label">
@@ -85,13 +85,13 @@ export default function NoteItem(props) {
           />
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
+          <label htmlFor="exampleInputPassword1" className="form-label">
             Description
           </label>
-          <textarea class="form-control" id="edesc" rows="3" required
+          <textarea className="form-control" id="edesc" rows="3" required
             minLength={5}></textarea>
-          <div class="valid-feedback">Looks good!</div>
-          <div class="invalid-feedback">Atleast Five characters Needed</div>
+          <div className="valid-feedback">Looks good!</div>
+          <div className="invalid-feedback">Atleast Five characters Needed</div>
         </div>
         <div className="mb-3">
           <label className="form-label">
@@ -109,16 +109,16 @@ export default function NoteItem(props) {
         <button ref={refb} type="submit" className="btn btn-dark" hidden></button>
       </form>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-danger"
+                className="btn btn-danger"
                 data-bs-dismiss="modal"
                 ref={refc}
               >
                 Cancel
               </button>
-              <button type="button" class="btn btn-primary" onClick={subbut}>
+              <button type="button" className="btn btn-primary" onClick={subbut}>
                 Edit
               </button>
             </div>

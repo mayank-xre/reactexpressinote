@@ -13,7 +13,7 @@ export default function Notes(props) {
     <div className="container">
     <div className={`grid text-${context.mode==="light"?"dark":"light"}`} data-masonry={{"percentPosition": true }}>
       <h1>Your Notes</h1>
-      {notes.length===0 && <div class="alert alert-success" role="alert">No notes found</div>}
+      {notes.length===0 && <div className="alert alert-success" role="alert">No notes found</div>}
       {notes.map((note) => {
         return (
           <NoteItem alert={props.alert} note={note} key={note._id}></NoteItem>

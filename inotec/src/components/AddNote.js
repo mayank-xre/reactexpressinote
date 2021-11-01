@@ -26,7 +26,7 @@ export default function AddNote(props) {
     <div>
       <form className={`my-3 needs-validation text-${context.mode==="light"?"dark":"light"}`} onSubmit={addNoteform}>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">
+          <label htmlFor="exampleInputEmail1" className="form-label">
             Title
           </label>
           <input
@@ -38,19 +38,19 @@ export default function AddNote(props) {
             minLength={5}
           />
           <div className="valid-feedback">Looks good!</div>
-          <div class="invalid-feedback">Atleast Five characters Needed</div>
+          <div className="invalid-feedback">Atleast Five characters Needed</div>
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
+          <label htmlFor="exampleInputPassword1" className="form-label">
             Description
           </label>
-          <textarea class="form-control" id="desc" rows="3" required
+          <textarea className="form-control" id="desc" rows="3" required
             minLength={5}></textarea>
-          <div class="valid-feedback">Looks good!</div>
-          <div class="invalid-feedback">Atleast Five characters Needed</div>
+          <div className="valid-feedback">Looks good!</div>
+          <div className="invalid-feedback">Atleast Five characters Needed</div>
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">
+          <label htmlFor="exampleInputPassword1" className="form-label">
             Topic
           </label>
           <input
@@ -61,8 +61,8 @@ export default function AddNote(props) {
             minLength={3}
             maxLength={10}
           />
-          <div class="valid-feedback">Looks good!</div>
-          <div class="invalid-feedback">Atleast Five characters Needed</div>
+          <div className="valid-feedback">Looks good!</div>
+          <div className="invalid-feedback">Atleast Five characters Needed</div>
         </div>
         <button type="submit" className="btn btn-dark">
           Add
