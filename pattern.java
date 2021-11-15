@@ -1,34 +1,32 @@
 public class pattern{
     static int size;
     public static void print(){
-        String pat="";
-        String par="";
-        String part="";
+        String afterpart="";
+        String beforepart="";
+        String tabpart="";
         for(int k=0;k<size;k++){
-                part+="  ";
+            tabpart+="  ";
         }
         for(int i=0;i<size;i++){
-            pat="";
-            part=part.substring(0,(part.length()-"  ".length()));
+            tabpart=tabpart.substring(0,(tabpart.length()-"  ".length()));
             if(i==0){
-                par+="1";
-                String parts=part;
-                parts+=par;
+                beforepart+="1";
+                String parts=tabpart;
+                parts+=beforepart;
                 System.out.println(parts);
+                afterpart=" "+String.valueOf(i+1)+afterpart;
                 continue;
             }
             if(i>0){
-                par+=" ";
-                par=par+String.valueOf(i+1);
-                String parts=part;
-                parts+=par;
-                pat=parts;
-                for(int j=i;j>0;j--){
-                    pat+=" ";
-                    pat+=String.valueOf(j);
-                }
+                beforepart+=" ";
+                beforepart=beforepart+String.valueOf(i+1);
+                String parts=tabpart;
+                parts+=beforepart;
+                String pats;
+                pats=parts+afterpart;
+                System.out.println(pats);
+                afterpart=" "+String.valueOf(i+1)+afterpart;
             }
-            System.out.println(pat);
         }
     }
     public pattern(int s){
@@ -36,6 +34,6 @@ public class pattern{
     }
     public static void main(String[] args){
         pattern n=new pattern(5);
-    n.print();
-}
+        n.print();
+    }
 }
