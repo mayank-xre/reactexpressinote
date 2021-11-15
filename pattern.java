@@ -4,37 +4,38 @@ public class pattern{
         String pat="";
         String par="";
         String part="";
+        for(int k=0;k<size;k++){
+                part+="  ";
+        }
         for(int i=0;i<size;i++){
             pat="";
-            for(int k=i;k<size;k++){
-                part+="  ";
-            }
+            part=part.substring(0,(part.length()-"  ".length()));
             if(i==0){
                 par+="1";
-                part+=par;
-                System.out.println(part);
-                part="";
+                String parts=part;
+                parts+=par;
+                System.out.println(parts);
                 continue;
             }
             if(i>0){
                 par+=" ";
                 par=par+String.valueOf(i+1);
-                part+=par;
-                pat=part;
+                String parts=part;
+                parts+=par;
+                pat=parts;
                 for(int j=i;j>0;j--){
                     pat+=" ";
                     pat+=String.valueOf(j);
                 }
-                part="";
             }
             System.out.println(pat);
         }
     }
     public pattern(int s){
-		size=s;
-	}
-	public static void main(String[] args){
-		pattern n=new pattern(9);
-	n.print();
+        size=s;
+    }
+    public static void main(String[] args){
+        pattern n=new pattern(5);
+    n.print();
 }
 }
